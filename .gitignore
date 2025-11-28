@@ -2,3 +2,5 @@
 .project
 ch/*.class
 patterns/*.class
+java_streams/*.class
+recursion/*.class
