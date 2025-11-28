@@ -1,0 +1,20 @@
+package java_streams;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+// Find the first non-repeating character in a string
+public class FirstNonRepeatingCharacter {
+	public static void main(String args[]) {
+		String input = "aabbcde";
+		Character result = input.chars().mapToObj(c -> (char) c)
+				.collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()))
+				.entrySet().stream()
+				.filter(e -> e.getValue() == 1)
+				.map(Map.Entry::getKey)
+				.findFirst()
+				.orElse(null);
+		System.out.println(result.charValue());
+	}
+}
